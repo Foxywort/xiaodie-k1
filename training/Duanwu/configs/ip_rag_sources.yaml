@@ -1,0 +1,116 @@
+project:
+  name: xiaodie_ip_rag
+  seed: 20260619
+
+paths:
+  raw_dir: E:/Duanwu/data/ip_raw
+  authorized_dir: E:/Duanwu/data/ip_authorized
+  rag_dir: E:/Duanwu/data/ip_rag
+  reports_dir: E:/Duanwu/reports/ip_rag
+
+defaults:
+  request_timeout_sec: 45
+  min_text_chars: 180
+  chunk_min_chars: 120
+  chunk_max_chars: 900
+  top_k: 8
+
+franchises:
+  - id: barbapapa
+    zh_name: 巴巴爸爸
+    aliases: [巴巴爸爸, 巴巴妈妈, 巴巴祖, 巴巴拉拉, 巴巴布莱特, 巴巴贝尔, 巴巴鲍伯, 巴巴利波, Barbapapa, Barbamama, Barbabright, Barbabelle, Barbalala, Barbabeau, Barbazoo, Barbalib, Barbabravo]
+    authorization: user_asserted_company_authorization
+    notes: Use official/public franchise pages and user-provided licensed files.
+    sources:
+      - name: barbapapa_official_family
+        url: https://www.barbapapa.com/the-barbapa-family-en/
+        source_type: official_public_web
+        license: user-authorized-official-public-page
+      - name: barbapapa_wikipedia
+        url: https://en.wikipedia.org/wiki/Barbapapa
+        source_type: wikipedia
+        license: CC-BY-SA-4.0
+    facts:
+      - source: barbapapa_official_family
+        license: user-authorized-official-public-page
+        text: 巴巴爸爸像花一样在花园里出生，可以把自己的身体变成各种形状，性格友善，大家都喜欢他。巴巴妈妈是巴巴爸爸一家中的妈妈。巴巴爸爸一家包含巴巴爸爸、巴巴妈妈以及巴巴祖、巴巴拉拉、巴巴布莱特、巴巴贝尔等孩子。注意：巴巴爸爸一家的能力是身体变形，不是魔法，也不是凭空制造物品；可以变成桥、梯子、浇水壶形状或篮子形状来帮忙，但不要写成“变出花、变出丝带、用魔法棒变出东西”。故事应突出变形帮助朋友、家庭合作和温柔解决问题。
+
+  - id: paw_patrol
+    zh_name: 汪汪队
+    aliases: [汪汪队, 汪汪队立大功, 莱德, 阿奇, 毛毛, 天天, 小砾, 灰灰, 路马, 珠珠, 小克, PAW Patrol, Ryder, Chase, Marshall, Skye, Rubble, Rocky, Zuma, Everest, Tracker, Liberty]
+    authorization: user_asserted_company_authorization
+    notes: Use official/public franchise pages and user-provided licensed files.
+    sources:
+      - name: paw_patrol_official_character_guide
+        url: https://www.pawpatrol.com/character-guide
+        source_type: official_public_web
+        license: user-authorized-official-public-page
+      - name: paw_patrol_wikipedia
+        url: https://en.wikipedia.org/wiki/PAW_Patrol
+        source_type: wikipedia
+        license: CC-BY-SA-4.0
+    facts:
+      - source: paw_patrol_wikipedia
+        license: CC-BY-SA-4.0
+        text: 汪汪队由男孩莱德带领，小狗们一起完成救援任务。阿奇 Chase 是警犬，毛毛 Marshall 是消防犬，天天 Skye 擅长飞行，小砾 Rubble 擅长工程建设，灰灰 Rocky 擅长回收和修理，路马 Zuma 擅长水上救援。儿童故事应把救援改写为安全、温和、日常的小帮助，避免危险追逐。
+
+  - id: octonauts
+    zh_name: 海底小纵队
+    aliases: [海底小纵队, 巴克队长, 呱唧, 皮医生, 谢灵通, 突突兔, 达西西, 章教授, 小萝卜, 章鱼堡, Octonauts, Barnacles, Kwazii, Peso, Shellington, Tweak, Dashi, Inkling, Tunip, Gup, Octopod]
+    authorization: user_asserted_company_authorization
+    notes: Use official/public franchise pages and user-provided licensed files.
+    sources:
+      - name: octonauts_official
+        url: https://www.octonauts.com/
+        source_type: official_public_web
+        license: user-authorized-official-public-page
+      - name: octonauts_wikipedia
+        url: https://en.wikipedia.org/wiki/Octonauts
+        source_type: wikipedia
+        license: CC-BY-SA-4.0
+    facts:
+      - source: octonauts_official
+        license: user-authorized-official-public-page
+        text: 海底小纵队是一群可爱的动物探险队员，他们从海底基地章鱼堡出发，探索海洋、寻找冒险和乐趣。巴克队长 Barnacles 是队长，呱唧 Kwazii 是勇敢好奇的猫，皮医生 Peso 是企鹅医生，谢灵通 Shellington 是科学家。故事应突出探索、保护海洋朋友、合作和温柔救助。
+
+  - id: my_little_pony
+    zh_name: 小马宝莉
+    aliases: [小马宝莉, 紫悦, 云宝, 萍琪派, 柔柔, 珍奇, 苹果嘉儿, 穗龙, 小马谷, 小马利亚, My Little Pony, Twilight Sparkle, Rainbow Dash, Pinkie Pie, Fluttershy, Rarity, Applejack, Spike, Ponyville, Equestria]
+    authorization: user_asserted_company_authorization
+    notes: Use official/public franchise pages and user-provided licensed files.
+    sources:
+      - name: my_little_pony_hasbro
+        url: https://mylittlepony.hasbro.com/en-us
+        source_type: official_public_web
+        license: user-authorized-official-public-page
+      - name: my_little_pony_fim_wikipedia
+        url: https://en.wikipedia.org/wiki/My_Little_Pony:_Friendship_Is_Magic
+        source_type: wikipedia
+        license: CC-BY-SA-4.0
+      - name: my_little_pony_characters_wikipedia
+        url: https://en.wikipedia.org/wiki/List_of_My_Little_Pony:_Friendship_Is_Magic_characters
+        source_type: wikipedia
+        license: CC-BY-SA-4.0
+    facts:
+      - source: my_little_pony_characters_wikipedia
+        license: CC-BY-SA-4.0
+        text: 小马宝莉 Friendship Is Magic 的核心朋友被称为 Mane Six，包括紫悦 Twilight Sparkle、云宝 Rainbow Dash、萍琪派 Pinkie Pie、柔柔 Fluttershy、珍奇 Rarity 和苹果嘉儿 Applejack。故事重点应放在友谊、理解、合作和互相欣赏，不要加入战斗或可怕冲突。
+
+  - id: peppa_pig
+    zh_name: 小猪佩奇
+    aliases: [小猪佩奇, 佩奇, 乔治, 猪妈妈, 猪爸爸, 猪爷爷, 猪奶奶, 苏西羊, 瑞贝卡兔, 小马佩德罗, 小猫坎迪, Peppa Pig, Peppa, George, Mummy Pig, Daddy Pig, Suzy Sheep, Rebecca Rabbit, Pedro Pony, Candy Cat]
+    authorization: user_asserted_company_authorization
+    notes: Use official/public franchise pages and user-provided licensed files.
+    sources:
+      - name: peppa_pig_official_characters
+        url: https://www.peppapig.com/en-us/characters
+        source_type: official_public_web
+        license: user-authorized-official-public-page
+      - name: peppa_pig_wikipedia
+        url: https://en.wikipedia.org/wiki/Peppa_Pig
+        source_type: wikipedia
+        license: CC-BY-SA-4.0
+    facts:
+      - source: peppa_pig_official_characters
+        license: user-authorized-official-public-page
+        text: 小猪佩奇的常见角色包括佩奇 Peppa Pig、弟弟乔治 George Pig、猪妈妈 Mummy Pig、猪爸爸 Daddy Pig、猪爷爷、猪奶奶，以及苏西羊、瑞贝卡兔、小猫坎迪等朋友。佩奇和乔治是姐弟关系，故事适合围绕家庭、朋友、玩具、游戏、轮流、分享和睡前日常展开。

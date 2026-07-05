@@ -1,0 +1,66 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.env
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Large generated assets and model/data artifacts
+/artifacts/
+/board_runtime/
+/training/Duanwu/data/raw/
+/training/Duanwu/outputs/
+/training/Duanwu/logs/
+/source/XiaoDie/outputs/
+/source/XiaoDie/llm/data/raw/
+/source/XiaoDie/llm/data/processed/
+/source/XiaoDie/llm/outputs/
+/source/XiaoDie/llm/checkpoints/
+/source/XiaoDie/models/
+
+# Vendored or downloaded third-party repositories/tools
+/source/XiaoDie/tools/llama.cpp/
+/source/XiaoDie/tools/downloads/
+/source/XiaoDie/tools/llama.cpp-bin-*/
+/training/Duanwu/data/raw/storybooks_chinese/repo/
+
+# Binary model/checkpoint/data formats that GitHub should not receive directly
+*.gguf
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.bin
+*.far
+*.arrow
+*.parquet
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.7z
+
+# LaTeX build intermediates
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+*.xdv

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd /home/vicky/xiaodie
+
+export XIAODIE_BUTTON_GPIO="${XIAODIE_BUTTON_GPIO:-35}"
+export XIAODIE_BUTTON_ACTIVE="${XIAODIE_BUTTON_ACTIVE:-low}"
+export XIAODIE_TTS_THREADS="${XIAODIE_TTS_THREADS:-8}"
+export XIAODIE_TTS_NICE="${XIAODIE_TTS_NICE:--5}"
+export XIAODIE_TTS_SENTENCES="${XIAODIE_TTS_SENTENCES:-5}"
+export XIAODIE_TTS_CHUNK_MIN_CHARS="${XIAODIE_TTS_CHUNK_MIN_CHARS:-40}"
+export XIAODIE_TTS_CHUNK_MAX_CHARS="${XIAODIE_TTS_CHUNK_MAX_CHARS:-140}"
+
+exec /home/vicky/xiaodie/app/start_xiaodie_button_story.sh "$@"

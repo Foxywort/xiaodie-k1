@@ -1,0 +1,47 @@
+output:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  reports_dir: reports
+
+defaults:
+  max_samples_per_source: 500
+  min_chinese_chars: 100
+  high_quality_threshold: 0.70
+
+sources:
+  - name: xiaodie_project_seed
+    type: project_generated
+    enabled: true
+    license: project-generated
+    url: local://scripts/download_datasets.py
+    age_level: preschool
+    sample_count: 240
+
+  - name: opencsg_chinese_cosmopedia
+    type: huggingface_dataset
+    enabled: false
+    dataset_id: opencsg/chinese-cosmopedia
+    url: https://huggingface.co/datasets/opencsg/chinese-cosmopedia
+    license: apache-2.0
+    split: train
+    streaming: true
+    text_fields: [text, content, article, prompt, response]
+    notes: Huge dataset; enable only when you want to sample from it.
+
+  - name: tinystories_chinese
+    type: huggingface_file
+    enabled: false
+    dataset_id: adam89/TinyStoriesChinese
+    url: https://huggingface.co/datasets/adam89/TinyStoriesChinese
+    license: cdla-sharing-1.0
+    files:
+      - TinyStories_all_data_zh.tar.gz
+    notes: Large 2.6GB archive; disabled by default.
+
+  - name: chinese_kid_story_metadata
+    type: huggingface_metadata
+    enabled: true
+    dataset_id: hughxusu/chinese-kid-story
+    url: https://huggingface.co/datasets/hughxusu/chinese-kid-story
+    license: mit
+    notes: Metadata-only in current HF repo snapshot.

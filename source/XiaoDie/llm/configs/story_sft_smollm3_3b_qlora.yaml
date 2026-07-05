@@ -1,0 +1,48 @@
+run_name: xiaodie-story-smollm3-3b-qlora
+
+model:
+  # Stable text-only 3B CausalLM that loads in the current Windows stack.
+  # Latest strict-3B target tracked separately: mistralai/Ministral-3-3B-Instruct-2512-BF16.
+  name_or_path: E:/xiaodie_models/SmolLM3-3B
+  cache_dir: E:/xiaodie_models/huggingface
+  trust_remote_code: false
+  load_in_4bit: true
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: float16
+  bnb_4bit_use_double_quant: true
+
+data:
+  train_file: llm/data/processed/story_sft_train.jsonl
+  eval_file: llm/data/processed/story_sft_eval.jsonl
+  max_seq_length: 256
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+
+training:
+  output_dir: llm/outputs/smollm3-3b-story-qlora
+  num_train_epochs: 2
+  max_steps: 2000
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  learning_rate: 0.0002
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  logging_steps: 1
+  save_steps: 100
+  eval_steps: 100
+  save_total_limit: 3
+  fp16: true
+  bf16: false
+  gradient_checkpointing: false
+  optim: adamw_torch
+  report_to: none
+  seed: 20260616

@@ -1,0 +1,21 @@
+# XiaoDie K1 button voice story assistant
+#
+# Wiring for a 3-pin SVG button module:
+#   V -> VCC3V3_SYS
+#   G -> GND
+#   S -> GPIO_35_3V3
+#
+# Behavior:
+#   Hold button: record from the USB microphone.
+#   Release button: ASR -> DeepSeek story -> Chaowen Full TTS on the 3.5mm headset.
+#   Press again at any time: interrupt everything and start a new recording.
+
+cd /home/vicky/xiaodie
+
+# Your current 3-pin button module is low-active: signal goes low when pressed.
+sudo env XIAODIE_BUTTON_GPIO=35 XIAODIE_BUTTON_ACTIVE=low \
+  /home/vicky/xiaodie/app/start_xiaodie_button_story.sh
+
+# If a different button module behaves the opposite way, use this instead:
+# sudo env XIAODIE_BUTTON_GPIO=35 XIAODIE_BUTTON_ACTIVE=high \
+#   /home/vicky/xiaodie/app/start_xiaodie_button_story.sh

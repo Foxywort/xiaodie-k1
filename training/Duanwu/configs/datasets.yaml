@@ -1,0 +1,58 @@
+output:
+  raw_dir: E:/Duanwu/data/raw
+  processed_dir: E:/Duanwu/data/processed
+  reports_dir: E:/Duanwu/reports
+
+defaults:
+  min_chinese_chars: 100
+  max_chinese_chars: 1800
+  high_quality_threshold: 0.72
+  seed: 20260618
+
+sources:
+  - name: tinystories_chinese
+    type: hf_tar_dataset
+    enabled: true
+    dataset_id: adam89/TinyStoriesChinese
+    file: TinyStories_all_data_zh.tar.gz
+    url: https://huggingface.co/datasets/adam89/TinyStoriesChinese
+    license: cdla-sharing-1.0
+    sample_limit: 6000
+    notes: Real Chinese TinyStories translation dataset. Main round-2 story source.
+
+  - name: chinese_cosmopedia
+    type: hf_streaming_dataset
+    enabled: true
+    dataset_id: opencsg/chinese-cosmopedia
+    split: train
+    url: https://huggingface.co/datasets/opencsg/chinese-cosmopedia
+    license: apache-2.0
+    sample_limit: 1200
+    text_fields: [text, content, article, response, story]
+    notes: Open Chinese synthetic knowledge/story-like corpus; sampled and filtered for child-safe Chinese narrative text.
+
+  - name: storybooks_chinese
+    type: git_text_repo
+    enabled: true
+    repo: https://github.com/global-asp/storybooks-chinese.git
+    url: https://github.com/global-asp/storybooks-chinese
+    license: mit
+    sample_limit: 1200
+    notes: Global Storybooks Chinese repository; parse Chinese text files from the open repository.
+
+  - name: project_gutenberg_public_domain
+    type: gutenberg_text
+    enabled: true
+    license: public-domain
+    sample_limit: 300
+    urls:
+      - https://www.gutenberg.org/cache/epub/29939/pg29939.txt
+    notes: Public-domain Gutenberg fairy/folk tale material. Non-Chinese text is stored for traceability; no generated adaptation is used by default.
+
+  - name: xiaodie_safety_seed
+    type: local_safety_seed
+    enabled: false
+    license: project-generated
+    url: local://E:/Duanwu/scripts/collect_open_data.py
+    sample_limit: 200
+    notes: Small safety/style supplement only; not the main dataset.

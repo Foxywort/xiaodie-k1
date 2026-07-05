@@ -1,0 +1,77 @@
+project:
+  name: xiaodie_chinese_children_story
+  seed: 20260618
+
+model_selection:
+  preferred_family: qwen
+  vram_gb: 8
+  model_name_or_path: auto
+  smoke_model_name_or_path: hf-internal-testing/tiny-random-LlamaForCausalLM
+  candidates:
+    - name: Qwen/Qwen3-4B
+      role: generative
+      license: apache-2.0
+      chinese_score: 0.95
+      story_score: 0.80
+      context_length_score: 0.90
+      estimated_qlora_vram_gb: 7.8
+      notes: Preferred Chinese text-generation 4B base.
+    - name: Qwen/Qwen3.5-4B
+      role: image-text-to-text
+      license: apache-2.0
+      chinese_score: 0.95
+      story_score: 0.75
+      context_length_score: 0.90
+      estimated_qlora_vram_gb: 8.2
+      notes: Newer but multimodal architecture; train only if stack supports it.
+    - name: HuggingFaceTB/SmolLM3-3B
+      role: generative
+      license: apache-2.0
+      chinese_score: 0.55
+      story_score: 0.60
+      context_length_score: 0.85
+      estimated_qlora_vram_gb: 6.5
+      notes: Stable fallback on current Windows stack.
+    - name: Qwen/Qwen3-Embedding-4B
+      role: embedding
+      license: apache-2.0
+      chinese_score: 0.90
+      story_score: 0.00
+      context_length_score: 0.80
+      estimated_qlora_vram_gb: 0.0
+      notes: Not a generative model; can be used for retrieval/scoring, not story generation.
+
+data:
+  processed_file: data/processed/chinese_children_stories.jsonl
+  train_file: data/processed/sft_train.jsonl
+  eval_file: data/processed/sft_eval.jsonl
+  eval_ratio: 0.08
+  max_seq_length: 256
+
+training:
+  output_dir: outputs/story-qwen-lora
+  smoke_output_dir: outputs/smoke-story-lora
+  max_steps: 2000
+  smoke_max_steps: 3
+  epochs: 1
+  learning_rate: 0.0002
+  batch_size: 1
+  gradient_accumulation_steps: 1
+  warmup_ratio: 0.03
+  logging_steps: 1
+  save_steps: 100
+  eval_steps: 100
+  fp16: true
+  bf16: false
+  gradient_checkpointing: false
+  optim: adamw_torch
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj

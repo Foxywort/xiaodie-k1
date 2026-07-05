@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+pkill -TERM -f xiaodie_button_story.py 2>/dev/null || true
+pkill -TERM -f xiaodie_asr_daemon 2>/dev/null || true
+sleep 0.3
+pkill -KILL -f xiaodie_button_story.py 2>/dev/null || true
+pkill -KILL -f xiaodie_asr_daemon 2>/dev/null || true
+
+/home/vicky/xiaodie/tts/stop_chaowen_tts_service.sh 2>/dev/null || true

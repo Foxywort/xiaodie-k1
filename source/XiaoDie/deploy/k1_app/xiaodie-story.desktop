@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=小蝶故事机
+Comment=按住按钮说话，松开后小蝶讲故事
+Exec=/home/vicky/xiaodie/app/xiaodie_desktop_launcher.sh
+Icon=audio-input-microphone
+Terminal=false
+Categories=Education;AudioVideo;
+StartupNotify=true

@@ -1,0 +1,14 @@
+{
+  "dataset_id": "hughxusu/chinese-kid-story",
+  "url": "https://huggingface.co/datasets/hughxusu/chinese-kid-story",
+  "license": "mit",
+  "tags": [
+    "license:mit",
+    "region:us"
+  ],
+  "siblings": [
+    ".gitattributes",
+    "README.md"
+  ],
+  "card_data": "license: mit"
+}
