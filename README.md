@@ -36,9 +36,9 @@
 
 小蝶硬件原型以 K1 MUSE Pi Pro 为核心，外接 USB 麦克风、实体按钮、音频输出设备，并配合 3D 打印外壳完成故事机形态验证。
 
-![K1 核心资源与外设接口](docs/report/images/new_pics/K1_core.png)
+![小蝶开发板与外设实物](docs/report/images/new_pics/dev_board.png)
 
-![K1 MUSE Pi Pro 引脚图](docs/report/images/new_pics/K1_board.png)
+![3D 打印外壳建模](docs/report/images/new_pics/waike.png)
 
 ![小蝶硬件原型实物](docs/report/images/new_pics/machine_waike.png)
 
