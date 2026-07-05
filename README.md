@@ -123,6 +123,8 @@
 
 小蝶已在线下幼儿园场景中进行演示，验证儿童语音输入、故事生成、语音播报和班级互动流程。
 
+[观看演示视频](https://github.com/Foxywort/xiaodie-k1/releases/tag/demo-video)
+
 ![儿童对设备说出故事主题](docs/report/images/new_pics/story1.jpg)
 
 ![幼儿园互动演示](docs/report/images/new_pics/kidgarden.jpg)
