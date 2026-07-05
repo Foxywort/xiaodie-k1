@@ -143,16 +143,9 @@
 ├── training/Duanwu/         # 第二轮训练工程：数据清洗、RAG 知识库、训练配置和评估报告
 ├── demos/                   # K1 板端导出的故事音频和文本样例
 ├── docs/report/images/      # GitHub 首页 README 使用的报告图片
-├── README_PACKAGE.md        # 原始完整交付包说明
-├── GITHUB_UPLOAD_NOTES.md   # GitHub 上传范围与大文件说明
+├── README_PACKAGE.md        # 项目交付说明
 └── IMPORTANT_HASHES.sha256  # 关键模型与交付资产哈希
 ```
-
-## 大文件说明
-
-本地完整交付包包含 GGUF 模型、合并后的 Hugging Face 模型、ONNX 语音模型、训练 checkpoint、原始数据集和板端运行目录，总体积约 37 GB。这些文件不适合直接放入普通 GitHub 仓库。
-
-当前 GitHub 仓库跟踪的是源码、配置、文档、报告图片、小型演示和可复现脚本。大模型与训练产物建议使用 GitHub Releases、Git LFS、Hugging Face、ModelScope、云存储或内部制品库管理。
 
 ## 快速入口
 
